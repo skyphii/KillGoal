@@ -3,6 +3,7 @@ package dev.skyphi;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.bukkit.GameMode;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -42,6 +43,7 @@ public class AngrySnowman {
         List<Player> nearbyPlayers = snowman.getNearbyEntities(20, 20, 20).stream()
             .filter(entity -> entity instanceof Player)
             .map(entity -> (Player) entity)
+            .filter(p -> p.getGameMode() == GameMode.SURVIVAL || p.getGameMode() == GameMode.ADVENTURE)
             .collect(Collectors.toList());
         if(nearbyPlayers.size() == 0) return;
 

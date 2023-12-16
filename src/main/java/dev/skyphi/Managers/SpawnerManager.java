@@ -2,6 +2,7 @@ package dev.skyphi.Managers;
 
 import java.util.ArrayList;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -46,7 +47,9 @@ public class SpawnerManager {
             Location loc = spawners.get(rand);
             
             long playersNearby = loc.getWorld().getNearbyEntities(loc, 10, 10, 10).stream()
-                .filter(entity -> entity instanceof Player).count();
+                .filter(entity -> entity instanceof Player &&
+                    (((Player)entity).getGameMode() == GameMode.SURVIVAL || ((Player)entity).getGameMode() == GameMode.ADVENTURE))
+                .count();
             if(playersNearby == 0) continue;
 
             spawnRandomEntity(loc);
