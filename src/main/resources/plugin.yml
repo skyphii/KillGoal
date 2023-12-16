@@ -1,0 +1,14 @@
+main: dev.skyphi.KillGoal
+name: KillGoal
+version: 1.0
+api-version: 1.20
+commands:
+  setgoal:
+    description: Set the server-wide kill goal
+    usage: /<command> <number>
+  setspawner:
+    description: Set a new mob spawner point
+    usage: /<command>
+  start:
+    description: Set the starting position
+    usage: /<command>
