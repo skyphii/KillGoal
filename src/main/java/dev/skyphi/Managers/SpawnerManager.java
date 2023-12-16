@@ -46,7 +46,7 @@ public class SpawnerManager {
             int rand = (int)(Math.random() * spawners.size());
             Location loc = spawners.get(rand);
             
-            long playersNearby = loc.getWorld().getNearbyEntities(loc, 10, 10, 10).stream()
+            long playersNearby = loc.getWorld().getNearbyEntities(loc, 20, 20, 20).stream()
                 .filter(entity -> entity instanceof Player &&
                     (((Player)entity).getGameMode() == GameMode.SURVIVAL || ((Player)entity).getGameMode() == GameMode.ADVENTURE))
                 .count();
