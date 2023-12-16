@@ -9,6 +9,7 @@ This spigot plugin is being developed for SootMC's 2023 Christmas event, but des
   - Player leaderboard
 - Make spawners spawn mobs in 10x10 range instead of 1x1
 - Rewards? Maybe separate from this plugin.
+- Ice zombies?
 
 # DONE
 - Set server-wide goal with command (/setgoal <number>)
