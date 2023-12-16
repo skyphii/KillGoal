@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowman;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -42,7 +43,13 @@ public class SpawnerManager {
         for(int i = 0; i < amount; i++) {
             // spawn each mob at random spawner
             int rand = (int)(Math.random() * spawners.size());
-            spawnRandomEntity(spawners.get(rand));
+            Location loc = spawners.get(rand);
+            
+            long playersNearby = loc.getWorld().getNearbyEntities(loc, 10, 10, 10).stream()
+                .filter(entity -> entity instanceof Player).count();
+            if(playersNearby == 0) continue;
+
+            spawnRandomEntity(loc);
         }
     }
 
