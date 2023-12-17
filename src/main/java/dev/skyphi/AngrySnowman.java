@@ -15,7 +15,7 @@ import org.bukkit.util.Vector;
 
 public class AngrySnowman {
     
-    private static final int SNOWBALL_DELAY = 20; // in ticks
+    private static final int SNOWBALL_DELAY = 30; // in ticks
     private static final int MIN_HEALTH = 20, MAX_HEALTH = 40;
 
     private Snowman snowman;
@@ -43,7 +43,7 @@ public class AngrySnowman {
             snowman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 1));
         }
 
-        SNOWBALL_RUNNABLE.runTaskTimer(KillGoal.INSTANCE, 10, SNOWBALL_DELAY);
+        SNOWBALL_RUNNABLE.runTaskTimer(KillGoal.INSTANCE, (int)(Math.random() * 21), SNOWBALL_DELAY);
     }
 
     private void throwSnowball() {
