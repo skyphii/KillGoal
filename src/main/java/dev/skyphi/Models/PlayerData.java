@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
 
 import dev.skyphi.KillGoal;
@@ -45,7 +47,7 @@ public class PlayerData implements Serializable {
 
     public static void addKill(Player player) {
         if(KillGoal.TOTAL_KILLS < KillGoal.GOAL) get(player).addKill();
-        player.sendMessage("+1... Total: " + get(player).getKillCount());
+        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_CHIME, SoundCategory.RECORDS, 1.0f, 1.0f);
         KillGoal.addToKills();
         save();
     }
