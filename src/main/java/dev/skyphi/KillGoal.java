@@ -19,6 +19,7 @@ public class KillGoal extends JavaPlugin {
     public void onEnable() {
         KillGoal.INSTANCE = this;
 
+        initConfig();
         PlayerData.load();
 
         getServer().getPluginManager().registerEvents(new SnowballListener(), this);
@@ -31,6 +32,11 @@ public class KillGoal extends JavaPlugin {
     @Override
     public void onDisable() {
         PlayerData.save();
+    }
+
+    private void initConfig() {
+        saveDefaultConfig();
+        KillGoal.GOAL = getConfig().getInt("goal");
     }
 
     public static int addToKills() {

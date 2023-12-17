@@ -27,6 +27,8 @@ public class SetGoalCommand implements CommandExecutor {
         }
 
         KillGoal.GOAL = goal;
+        KillGoal.INSTANCE.getConfig().set("goal", goal);
+        KillGoal.INSTANCE.saveConfig();
         
         return true;
     }
