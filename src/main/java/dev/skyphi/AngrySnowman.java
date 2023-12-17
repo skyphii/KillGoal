@@ -8,6 +8,8 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Snowman;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -36,6 +38,11 @@ public class AngrySnowman {
             .setBaseValue(MIN_HEALTH + (int)(Math.random() * (MAX_HEALTH - MIN_HEALTH + 1)));
         snowman.setHealth(snowman.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         
+        if(Math.random() <= 0.1) {
+            // 10% chance of gaining speed
+            snowman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 1));
+        }
+
         SNOWBALL_RUNNABLE.runTaskTimer(KillGoal.INSTANCE, 10, SNOWBALL_DELAY);
     }
 
