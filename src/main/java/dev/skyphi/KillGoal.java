@@ -38,6 +38,7 @@ public class KillGoal extends JavaPlugin {
     private void initConfig() {
         saveDefaultConfig();
         KillGoal.GOAL = getConfig().getInt("goal");
+        KillGoal.TOTAL_KILLS = getConfig().getInt("progress");
     }
 
     public static int addToKills() {
