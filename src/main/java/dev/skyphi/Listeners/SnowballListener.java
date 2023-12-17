@@ -10,7 +10,7 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 
 public class SnowballListener implements Listener {
 
-    private static final double SNOWBALL_DAMAGE = 2.0;
+    private static final double SNOWBALL_DAMAGE = 1.0;
 
     @EventHandler
     public void on(ProjectileHitEvent event) {

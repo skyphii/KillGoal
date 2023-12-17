@@ -48,7 +48,7 @@ public class AngrySnowman {
         if(nearbyPlayers.size() == 0) return;
 
         Player target = nearbyPlayers.get((int)(Math.random() * nearbyPlayers.size()));
-        Vector velocity = target.getLocation().toVector().subtract(snowman.getLocation().toVector()).normalize().multiply(2);
+        Vector velocity = target.getLocation().toVector().subtract(snowman.getLocation().toVector()).normalize().multiply(1.5);
 
         snowman.launchProjectile(Snowball.class, velocity);
     }
