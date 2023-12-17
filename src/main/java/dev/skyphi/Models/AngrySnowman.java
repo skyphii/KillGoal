@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.bukkit.GameMode;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Snowman;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,10 +19,13 @@ import dev.skyphi.KillGoal;
 
 public class AngrySnowman {
     
+    public static final NamespacedKey DEATHBALL_KEY = new NamespacedKey(KillGoal.INSTANCE, "deathball");
+
     private static final int SNOWBALL_DELAY = 30; // in ticks
     private static final int MIN_HEALTH = 20, MAX_HEALTH = 40;
 
     private Snowman snowman;
+    private boolean boosted;
 
     private final BukkitRunnable SNOWBALL_RUNNABLE = new BukkitRunnable() {
         @Override
@@ -41,7 +46,8 @@ public class AngrySnowman {
         snowman.setHealth(snowman.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         
         if(Math.random() <= 0.1) {
-            // 10% chance of gaining speed
+            // 10% chance of getting boosted (speed + special attack on death)
+            boosted = true;
             snowman.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, -1, 1));
         }
 
@@ -65,6 +71,11 @@ public class AngrySnowman {
 
     private void die() {
         SNOWBALL_RUNNABLE.cancel();
+        if(!boosted) return;
+
+        Snowball deathball = snowman.launchProjectile(Snowball.class, new Vector(0, 1, 0));
+        deathball.setGlowing(true);
+        deathball.getPersistentDataContainer().set(DEATHBALL_KEY, PersistentDataType.BOOLEAN, true);
     }
 
 }
