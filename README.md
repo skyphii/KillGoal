@@ -8,7 +8,6 @@ This spigot plugin is being developed for SootMC's 2023 Christmas event, but des
   - Save/load server-wide kill goal progress
   - Add player leaderboard
     - Command? Or scoreboard overlay?
-- Rewards? Maybe separate from this plugin.
 - Ice zombies?
 
 # DONE
