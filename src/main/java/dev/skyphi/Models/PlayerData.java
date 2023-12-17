@@ -35,7 +35,7 @@ public class PlayerData implements Serializable {
     }
 
     public static void addKill(Player player) {
-        get(player).addKill();
+        if(KillGoal.TOTAL_KILLS < KillGoal.GOAL) get(player).addKill();
         KillGoal.addToKills();
         save();
     }
