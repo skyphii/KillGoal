@@ -3,10 +3,8 @@
 This spigot plugin is being developed for SootMC's 2023 Christmas event, but designed to be reused for similar events in the future.
 
 # TO-DO
-- Finish implementing kill tracking
-  - Implement save/load methods in PlayerData.java
-  - Add player leaderboard
-    - Hologram.
+- Add player leaderboard
+  - Hologram.
 - Ice zombies?
 
 # DONE
@@ -16,6 +14,8 @@ This spigot plugin is being developed for SootMC's 2023 Christmas event, but des
 - Place spawners and right click them with a snow golem egg to spawn angry snowmen (rates/range automatically get adjusted)
 - Basic kill tracking
 - Save/load server-wide kill goal progress
+- Finish implementing kill tracking
+  - Implement save/load methods in PlayerData.java
 
 - ~~Set spawner locations with command (/setspawner)~~ Replaced with real spawners
 - ~~Start command (/start)~~

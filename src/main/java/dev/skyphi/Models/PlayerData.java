@@ -1,7 +1,15 @@
 package dev.skyphi.Models;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.entity.Player;
@@ -12,17 +20,17 @@ public class PlayerData implements Serializable {
     
     private static HashMap<UUID, PlayerData> ALL_DATA = new HashMap<>();
 
-    private Player player;
+    private UUID uuid;
     private int killCount;
 
     public PlayerData(Player player) {
-        this.player = player;
+        this.uuid = player.getUniqueId();
 
         ALL_DATA.put(player.getUniqueId(), this);
     }
 
     // GETTERS & SETTERS //
-    public Player getPlayer() { return player; }
+    public UUID getUniqueId() { return uuid; }
 
     public int getKillCount() { return killCount; }
     public void addKill() { killCount++; }
@@ -36,18 +44,33 @@ public class PlayerData implements Serializable {
 
     public static void addKill(Player player) {
         if(KillGoal.TOTAL_KILLS < KillGoal.GOAL) get(player).addKill();
+        player.sendMessage("+1... Total: " + get(player).getKillCount());
         KillGoal.addToKills();
         save();
     }
 
     public static void save() {
-        // TO-DO
-        // save ALL_DATA hashmap to file
+        String path = KillGoal.INSTANCE.getDataFolder()+"/players.data";
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            List<PlayerData> valuesList = new ArrayList<>(ALL_DATA.values());
+            oos.writeObject(valuesList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void load() {
-        // TO-DO
-        // load ALL_DATA hashmap from file
+        String path = KillGoal.INSTANCE.getDataFolder()+"/players.data";
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            @SuppressWarnings("unchecked")
+            Collection<PlayerData> loadedData = (Collection<PlayerData>) ois.readObject();
+            
+            for(PlayerData pd : loadedData) {
+                ALL_DATA.put(pd.getUniqueId(), pd);
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }
