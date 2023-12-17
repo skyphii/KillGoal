@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 
 import dev.skyphi.Models.PlayerData;
 
@@ -20,6 +21,11 @@ public class KillListener implements Listener {
 
         Player killer = (Player)event.getDamager();
         PlayerData.addKill(killer);                                     // add kill to player's data
+    }
+
+    @EventHandler
+    public void on(EntityDeathEvent event) {
+        if(event.getEntityType() == EntityType.SNOWMAN) event.getDrops().clear();
     }
 
 }
