@@ -1,4 +1,4 @@
-package dev.skyphi;
+package dev.skyphi.Models;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,6 +12,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+
+import dev.skyphi.KillGoal;
 
 public class AngrySnowman {
     

@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import dev.skyphi.AngrySnowman;
+import dev.skyphi.Models.AngrySnowman;
 
 public class SpawnerListener implements Listener {
     
