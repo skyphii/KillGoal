@@ -1,6 +1,7 @@
 package dev.skyphi.Models;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -68,6 +69,8 @@ public class PlayerData implements Serializable {
             for(PlayerData pd : loadedData) {
                 ALL_DATA.put(pd.getUniqueId(), pd);
             }
+        } catch (FileNotFoundException e) {
+            // file doesn't exist yet - do nothing
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
