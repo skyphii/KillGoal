@@ -6,7 +6,7 @@ This spigot plugin is being developed for SootMC's 2023 Christmas event, but des
 - Finish implementing kill tracking
   - Implement save/load methods in PlayerData.java
   - Add player leaderboard
-    - Command? Or scoreboard overlay?
+    - Hologram.
 - Ice zombies?
 
 # DONE
