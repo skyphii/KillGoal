@@ -23,7 +23,7 @@ public class SnowballListener implements Listener {
         if(hitEntity.getType() != EntityType.PLAYER) return;
 
         Player hitPlayer = (Player)hitEntity;
-        hitPlayer.damage(SNOWBALL_DAMAGE);
+        hitPlayer.damage(SNOWBALL_DAMAGE, (Entity)projectile.getShooter());
     }
 
 }

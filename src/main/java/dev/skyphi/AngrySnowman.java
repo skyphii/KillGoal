@@ -14,14 +14,14 @@ import org.bukkit.util.Vector;
 public class AngrySnowman {
     
     private static final int SNOWBALL_DELAY = 20; // in ticks
-    private static final int MIN_HEALTH = 20, MAX_HEALTH = 100;
+    private static final int MIN_HEALTH = 20, MAX_HEALTH = 40;
 
     private Snowman snowman;
 
     private final BukkitRunnable SNOWBALL_RUNNABLE = new BukkitRunnable() {
         @Override
         public void run() {
-            if(snowman.isDead()) {
+            if(snowman == null || snowman.isDead()) {
                 die();
                 return;
             }
