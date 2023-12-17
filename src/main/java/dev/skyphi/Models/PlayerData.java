@@ -35,7 +35,7 @@ public class PlayerData implements Serializable {
     }
 
     public static void addKill(Player player) {
-        PlayerData.get(player).addKill();
+        get(player).addKill();
         KillGoal.addToKills();
         save();
     }

@@ -41,6 +41,8 @@ public class KillGoal extends JavaPlugin {
 
     public static int addToKills() {
         if(++TOTAL_KILLS == GOAL) onKillGoalReached();
+        INSTANCE.getConfig().set("progress", TOTAL_KILLS);
+        INSTANCE.saveConfig();
         return TOTAL_KILLS;
     }
 

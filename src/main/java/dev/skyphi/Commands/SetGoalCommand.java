@@ -29,6 +29,7 @@ public class SetGoalCommand implements CommandExecutor {
         KillGoal.GOAL = goal;
         KillGoal.INSTANCE.getConfig().set("goal", goal);
         KillGoal.INSTANCE.saveConfig();
+        player.sendMessage(ChatColor.AQUA + "Server-wide kill goal set to " + ChatColor.BOLD +""+goal);
         
         return true;
     }
