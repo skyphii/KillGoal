@@ -1,5 +1,6 @@
 package dev.skyphi;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import dev.skyphi.Commands.SetGoalCommand;
@@ -47,8 +48,9 @@ public class KillGoal extends JavaPlugin {
     }
 
     public static void onKillGoalReached() {
-        // TO-DO
-        // whatever happens when the goal is reached
+        INSTANCE.getServer().broadcastMessage(ChatColor.AQUA+""+ChatColor.BOLD
+            + "THE KILL GOAL OF " + ChatColor.RED+""+ChatColor.BOLD + GOAL
+            + ChatColor.AQUA+""+ChatColor.BOLD + " HAS BEEN REACHED!");
     }
 
 }
