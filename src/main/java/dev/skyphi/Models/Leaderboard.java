@@ -14,7 +14,7 @@ import dev.skyphi.KillGoal;
 
 public class Leaderboard implements Serializable {
     
-    public static final int UPDATE_FREQUENCY = 20*60*60; // 1 hour in ticks
+    public static final int UPDATE_FREQUENCY = 20*60; // 1 minute (in ticks)
     public static final int VISIBLE_RANGE = 200;
 
     private int numPlayers;
