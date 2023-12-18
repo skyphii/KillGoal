@@ -37,7 +37,7 @@ public class LeaderboardCommand implements CommandExecutor {
             }catch(NumberFormatException e) {}
         }
 
-        KillGoal.LEADERBOARD = new Leaderboard(numPlayers, player.getLocation().add(0, 2, 0));
+        KillGoal.LEADERBOARD = new Leaderboard(numPlayers, player.getLocation());
         KillGoal.LEADERBOARD.initialize();
 
         player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, SoundCategory.RECORDS, 1.0f, 1.0f);
