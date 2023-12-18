@@ -28,6 +28,10 @@ public class KillGoal extends JavaPlugin {
 
         initConfig();
         PlayerData.load();
+        LEADERBOARD = Leaderboard.load();
+        if(LEADERBOARD != null) {
+            LEADERBOARD.initialize();
+        }
 
         getServer().getPluginManager().registerEvents(new SnowballListener(), this);
         getServer().getPluginManager().registerEvents(new SpawnerListener(), this);
@@ -40,6 +44,10 @@ public class KillGoal extends JavaPlugin {
     @Override
     public void onDisable() {
         PlayerData.save();
+        if(LEADERBOARD != null) {
+            LEADERBOARD.save();
+            // LEADERBOARD.destroy();
+        }
     }
 
     private void initConfig() {

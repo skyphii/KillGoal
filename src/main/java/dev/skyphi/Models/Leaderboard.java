@@ -14,7 +14,7 @@ import dev.skyphi.KillGoal;
 
 public class Leaderboard implements Serializable {
     
-    public static final int UPDATE_FREQUENCY = 20*10; // 1 hour in ticks
+    public static final int UPDATE_FREQUENCY = 20*60*60; // 1 hour in ticks
     public static final int VISIBLE_RANGE = 200;
 
     private int numPlayers;
@@ -47,12 +47,18 @@ public class Leaderboard implements Serializable {
         clearHolograms();
     }
 
-    public void initLeaderboard() {
+    public void initialize() {
         if(hologramPool != null) hologramPool.getHolograms().clear();
         hologramPool = new HologramPool(KillGoal.INSTANCE, VISIBLE_RANGE);
 
         UPDATE_RUNNABLE.runTaskTimer(KillGoal.INSTANCE, 0, UPDATE_FREQUENCY);
         running = true;
+    }
+
+    public void save() {
+        KillGoal.INSTANCE.getConfig().set("leaderboard.numPlayers", numPlayers);
+        KillGoal.INSTANCE.getConfig().set("leaderboard.location", location);
+        KillGoal.INSTANCE.saveConfig();
     }
 
     private void clearHolograms() {
@@ -81,6 +87,14 @@ public class Leaderboard implements Serializable {
 
         return colour + number + ". " + playerData.getName() + " - " 
             + ChatColor.RED+""+ChatColor.BOLD + playerData.getKillCount();
+    }
+
+    // STATIC METHOD(S) //
+    public static Leaderboard load() {
+        int numPlayers = KillGoal.INSTANCE.getConfig().getInt("leaderboard.numPlayers");
+        Location location = KillGoal.INSTANCE.getConfig().getLocation("leaderboard.location");
+        if(location == null) return null;
+        return new Leaderboard(numPlayers, location);
     }
 
 }

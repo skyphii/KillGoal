@@ -1,2 +1,5 @@
 goal: 1000
 progress: 0
+leaderboard:
+  numPlayers: null
+  location: null

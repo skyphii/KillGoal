@@ -36,7 +36,7 @@ public class LeaderboardCommand implements CommandExecutor {
         }
 
         KillGoal.LEADERBOARD = new Leaderboard(numPlayers, player.getLocation().add(0, 2, 0));
-        KillGoal.LEADERBOARD.initLeaderboard();
+        KillGoal.LEADERBOARD.initialize();
         
         return true;
     }
