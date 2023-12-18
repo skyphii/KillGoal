@@ -75,7 +75,7 @@ public class Leaderboard implements Serializable {
                 colour = ChatColor.YELLOW+""+ChatColor.BOLD;
                 break;
             case 2:
-                colour = ChatColor.GRAY+""+ChatColor.BOLD;
+                colour = ChatColor.WHITE+""+ChatColor.BOLD;
                 break;
             case 3:
                 colour = ChatColor.GOLD+""+ChatColor.BOLD;
