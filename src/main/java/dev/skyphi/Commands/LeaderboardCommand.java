@@ -1,6 +1,8 @@
 package dev.skyphi.Commands;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,6 +39,8 @@ public class LeaderboardCommand implements CommandExecutor {
 
         KillGoal.LEADERBOARD = new Leaderboard(numPlayers, player.getLocation().add(0, 2, 0));
         KillGoal.LEADERBOARD.initialize();
+
+        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BIT, SoundCategory.RECORDS, 1.0f, 1.0f);
         
         return true;
     }

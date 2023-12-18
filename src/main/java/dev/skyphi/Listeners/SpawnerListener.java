@@ -1,6 +1,8 @@
 package dev.skyphi.Listeners;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Snowman;
@@ -25,6 +27,7 @@ public class SpawnerListener implements Listener {
         spawner.setRequiredPlayerRange(20);
         spawner.setSpawnRange(20);
         spawner.update();
+        event.getPlayer().playSound(event.getPlayer(), Sound.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE, SoundCategory.RECORDS, 1.0f, 1.0f);
     }
 
     @EventHandler
