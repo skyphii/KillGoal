@@ -3,8 +3,6 @@
 This spigot plugin is being developed for SootMC's 2023 Christmas event, but designed to be reused for similar events in the future.
 
 # TO-DO
-- Add player leaderboard
-  - Hologram.
 - Ice zombies?
 
 # DONE
@@ -16,6 +14,9 @@ This spigot plugin is being developed for SootMC's 2023 Christmas event, but des
 - Save/load server-wide kill goal progress
 - Finish implementing kill tracking
   - Implement save/load methods in PlayerData.java
+- Add player leaderboard
+  - Hologram.
+- Add permissions for commands
 
 - ~~Set spawner locations with command (/setspawner)~~ Replaced with real spawners
 - ~~Start command (/start)~~

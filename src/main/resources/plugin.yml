@@ -7,6 +7,8 @@ commands:
   setgoal:
     description: Set the server-wide kill goal
     usage: /<command> <number>
+    default: op
   leaderboard:
     description: Set the leaderboard at your position
     usage: /<command> [numPlayers]
+    default: op

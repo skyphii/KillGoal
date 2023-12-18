@@ -19,6 +19,11 @@ public class LeaderboardCommand implements CommandExecutor {
         }
         Player player = (Player)sender;
 
+        if(!player.hasPermission("killgoal.leaderboard")) {
+            player.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return true;
+        }
+
         if(KillGoal.LEADERBOARD != null) {
             KillGoal.LEADERBOARD.destroy();
         }

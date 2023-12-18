@@ -18,6 +18,11 @@ public class SetGoalCommand implements CommandExecutor {
         }
         Player player = (Player)sender;
 
+        if(!player.hasPermission("killgoal.setgoal")) {
+            player.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
+            return true;
+        }
+
         int goal = -1;
         try {
             goal = Integer.parseInt(args[0]);
