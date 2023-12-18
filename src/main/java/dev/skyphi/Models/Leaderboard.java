@@ -28,7 +28,8 @@ public class Leaderboard implements Serializable {
             public void run() {
                 clearHolograms();
                 PlayerData[] topPlayers = PlayerData.getTopPlayers(numPlayers).toArray(PlayerData[]::new);
-                HologramBuilder builder = Hologram.builder(KillGoal.INSTANCE, location);    
+                HologramBuilder builder = Hologram.builder(KillGoal.INSTANCE, location);
+                builder.addLine(makeProgressLine());
                 for(int i = 0; i < topPlayers.length; i++) {
                     builder.addLine(makePlayerLine(topPlayers[i], i));
                 }
@@ -87,6 +88,13 @@ public class Leaderboard implements Serializable {
 
         return colour + number + ". " + playerData.getName() + " - " 
             + ChatColor.RED+""+ChatColor.BOLD + playerData.getKillCount();
+    }
+
+    private String makeProgressLine() {
+        return ChatColor.AQUA+""+ChatColor.BOLD + "GOAL PROGRESS: "
+            + (KillGoal.TOTAL_KILLS < KillGoal.GOAL ? ChatColor.RED : ChatColor.GREEN)+""+ChatColor.BOLD + KillGoal.TOTAL_KILLS
+            + ChatColor.AQUA+""+ChatColor.BOLD + "/"
+            + ChatColor.GREEN+""+ChatColor.BOLD + KillGoal.GOAL;
     }
 
     // STATIC METHOD(S) //
