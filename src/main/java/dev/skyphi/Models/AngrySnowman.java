@@ -28,15 +28,15 @@ public class AngrySnowman {
     private boolean boosted;
 
     private final BukkitRunnable SNOWBALL_RUNNABLE = new BukkitRunnable() {
-        @Override
-        public void run() {
-            if(snowman == null || snowman.isDead()) {
-                die();
-                return;
+            @Override
+            public void run() {
+                if(snowman == null || snowman.isDead()) {
+                    die();
+                    return;
+                }
+                throwSnowball();
             }
-            throwSnowball();
-        }
-    };
+        };
 
 
     public AngrySnowman(Snowman snowman) {
