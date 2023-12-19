@@ -8,14 +8,19 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Snowman;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.persistence.PersistentDataType;
 
+import dev.skyphi.KillGoal;
 import dev.skyphi.Models.AngrySnowman;
 
 public class SpawnerListener implements Listener {
     
     public static final int MIN_DELAY = 20, MAX_DELAY = 200; // in ticks
+
+    private int activeSnowmen;
 
     @EventHandler
     public void on(PlayerInteractEvent event) {
@@ -33,7 +38,21 @@ public class SpawnerListener implements Listener {
     @EventHandler
     public void on(SpawnerSpawnEvent event) {
         if(event.getEntityType() != EntityType.SNOWMAN) return;
+        if(activeSnowmen >= KillGoal.MAX_SNOWMEN) {
+            event.setCancelled(true);
+            return;
+        }
+
         new AngrySnowman((Snowman)event.getEntity());
+        activeSnowmen++;
+    }
+
+    @EventHandler
+    public void on(EntityDeathEvent event) {
+        if(event.getEntityType() != EntityType.SNOWMAN) return;
+        if(!event.getEntity().getPersistentDataContainer().has(AngrySnowman.SNOWMAN_KEY, PersistentDataType.BOOLEAN)) return;
+        
+        activeSnowmen--;
     }
 
 }

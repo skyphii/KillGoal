@@ -19,10 +19,11 @@ import dev.skyphi.KillGoal;
 
 public class AngrySnowman {
     
+    public static final NamespacedKey SNOWMAN_KEY = new NamespacedKey(KillGoal.INSTANCE, "snowman");
     public static final NamespacedKey DEATHBALL_KEY = new NamespacedKey(KillGoal.INSTANCE, "deathball");
 
     private static final int SNOWBALL_DELAY = 30; // in ticks
-    private static final int MIN_HEALTH = 20, MAX_HEALTH = 40;
+    private static final int MIN_HEALTH = 10, MAX_HEALTH = 20;
 
     private Snowman snowman;
     private boolean boosted;
@@ -41,6 +42,8 @@ public class AngrySnowman {
 
     public AngrySnowman(Snowman snowman) {
         this.snowman = snowman;
+        snowman.setRemoveWhenFarAway(false);
+        snowman.getPersistentDataContainer().set(SNOWMAN_KEY, PersistentDataType.BOOLEAN, true);
         snowman.getAttribute(Attribute.GENERIC_MAX_HEALTH)
             .setBaseValue(MIN_HEALTH + (int)(Math.random() * (MAX_HEALTH - MIN_HEALTH + 1)));
         snowman.setHealth(snowman.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());

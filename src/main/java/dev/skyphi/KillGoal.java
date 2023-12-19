@@ -20,6 +20,7 @@ public class KillGoal extends JavaPlugin {
 
     public static int GOAL;
     public static int TOTAL_KILLS;
+    public static int MAX_SNOWMEN = 80;
     public static Leaderboard LEADERBOARD;
 
     @Override
@@ -54,6 +55,7 @@ public class KillGoal extends JavaPlugin {
         saveDefaultConfig();
         KillGoal.GOAL = getConfig().getInt("goal");
         KillGoal.TOTAL_KILLS = getConfig().getInt("progress");
+        KillGoal.MAX_SNOWMEN = getConfig().getInt("max_snowmen");
     }
 
     public static int addToKills() {

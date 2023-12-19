@@ -1,5 +1,6 @@
 goal: 1000
 progress: 0
+max_snowmen: 80
 leaderboard:
   numPlayers: null
   location: null
