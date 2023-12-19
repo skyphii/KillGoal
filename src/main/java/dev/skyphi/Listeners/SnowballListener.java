@@ -19,7 +19,7 @@ import dev.skyphi.Models.AngrySnowman;
 
 public class SnowballListener implements Listener {
 
-    private static final double SNOWBALL_DAMAGE = 1.0;
+    private static final double SNOWBALL_DAMAGE = 0.5;
 
     @EventHandler
     public void on(ProjectileHitEvent event) {
