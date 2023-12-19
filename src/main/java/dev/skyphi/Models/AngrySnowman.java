@@ -58,7 +58,7 @@ public class AngrySnowman {
     }
 
     private void throwSnowball() {
-        List<Player> nearbyPlayers = snowman.getNearbyEntities(20, 20, 20).stream()
+        List<Player> nearbyPlayers = snowman.getNearbyEntities(10, 20, 10).stream()
             .filter(entity -> entity instanceof Player)
             .map(entity -> (Player) entity)
             .filter(p -> p.getGameMode() == GameMode.SURVIVAL || p.getGameMode() == GameMode.ADVENTURE)
@@ -66,7 +66,7 @@ public class AngrySnowman {
         if(nearbyPlayers.size() == 0) return;
 
         Player target = nearbyPlayers.get((int)(Math.random() * nearbyPlayers.size()));
-        Vector velocity = target.getLocation().toVector().subtract(snowman.getLocation().toVector()).normalize().multiply(1.5);
+        Vector velocity = target.getLocation().toVector().subtract(snowman.getLocation().toVector()).normalize().multiply(1.25);
 
         snowman.teleport(snowman.getLocation().setDirection(velocity));
         snowman.launchProjectile(Snowball.class, velocity);

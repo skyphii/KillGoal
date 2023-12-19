@@ -30,7 +30,7 @@ public class SpawnerListener implements Listener {
         spawner.setMinSpawnDelay(MIN_DELAY);
         spawner.setMaxSpawnDelay(MAX_DELAY);
         spawner.setRequiredPlayerRange(20);
-        spawner.setSpawnRange(20);
+        spawner.setSpawnRange(10);
         spawner.update();
         event.getPlayer().playSound(event.getPlayer(), Sound.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE, SoundCategory.RECORDS, 1.0f, 1.0f);
     }
