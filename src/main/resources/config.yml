@@ -1,5 +1,7 @@
 goal: 1000
 progress: 0
+base_max: 15
+max_per_player: 5
 max_snowmen: 80
 leaderboard:
   numPlayers: null

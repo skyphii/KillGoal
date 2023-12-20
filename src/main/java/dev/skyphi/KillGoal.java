@@ -20,7 +20,7 @@ public class KillGoal extends JavaPlugin {
 
     public static int GOAL;
     public static int TOTAL_KILLS;
-    public static int MAX_SNOWMEN = 80;
+    public static int MAX_SNOWMEN = 80, BASE_MAX = 15, MAX_PER_PLAYER = 5;
     public static Leaderboard LEADERBOARD;
 
     @Override
@@ -56,6 +56,8 @@ public class KillGoal extends JavaPlugin {
         KillGoal.GOAL = getConfig().getInt("goal");
         KillGoal.TOTAL_KILLS = getConfig().getInt("progress");
         KillGoal.MAX_SNOWMEN = getConfig().getInt("max_snowmen");
+        KillGoal.BASE_MAX = getConfig().getInt("base_max");
+        KillGoal.MAX_PER_PLAYER = getConfig().getInt("max_per_player");
     }
 
     public static int addToKills() {
@@ -69,6 +71,10 @@ public class KillGoal extends JavaPlugin {
         INSTANCE.getServer().broadcastMessage(ChatColor.AQUA+""+ChatColor.BOLD
             + "THE KILL GOAL OF " + ChatColor.RED+""+ChatColor.BOLD + GOAL
             + ChatColor.AQUA+""+ChatColor.BOLD + " HAS BEEN REACHED!");
+    }
+
+    public static int getMaxSnowmen() {
+        return Math.min(MAX_SNOWMEN, BASE_MAX + (INSTANCE.getServer().getOnlinePlayers().size() * MAX_PER_PLAYER));
     }
 
 }

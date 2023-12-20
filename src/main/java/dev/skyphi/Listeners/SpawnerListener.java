@@ -38,7 +38,7 @@ public class SpawnerListener implements Listener {
     @EventHandler
     public void on(SpawnerSpawnEvent event) {
         if(event.getEntityType() != EntityType.SNOWMAN) return;
-        if(activeSnowmen >= KillGoal.MAX_SNOWMEN) {
+        if(activeSnowmen >= KillGoal.getMaxSnowmen()) {
             event.setCancelled(true);
             return;
         }
