@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.github.unldenis.hologram.HologramPool;
 
 import dev.skyphi.Commands.LeaderboardCommand;
+import dev.skyphi.Commands.ResetCommand;
 import dev.skyphi.Commands.SetGoalCommand;
 import dev.skyphi.Listeners.KillListener;
 import dev.skyphi.Listeners.SnowballListener;
@@ -40,6 +41,7 @@ public class KillGoal extends JavaPlugin {
 
         this.getCommand("setgoal").setExecutor(new SetGoalCommand());
         this.getCommand("leaderboard").setExecutor(new LeaderboardCommand());
+        this.getCommand("reset").setExecutor(new ResetCommand());
     }
 
     @Override

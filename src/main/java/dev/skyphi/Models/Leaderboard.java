@@ -15,7 +15,7 @@ import dev.skyphi.KillGoal;
 public class Leaderboard implements Serializable {
     
     public static final int UPDATE_FREQUENCY = 20*60; // 1 minute (in ticks)
-    public static final int VISIBLE_RANGE = 200;
+    public static final int VISIBLE_RANGE = 600;
 
     private int numPlayers;
     private Location location;
@@ -23,19 +23,7 @@ public class Leaderboard implements Serializable {
     private transient HologramPool hologramPool;
     private transient boolean running;
 
-    private final transient BukkitRunnable UPDATE_RUNNABLE = new BukkitRunnable() {
-            @Override
-            public void run() {
-                clearHolograms();
-                PlayerData[] topPlayers = PlayerData.getTopPlayers(numPlayers).toArray(PlayerData[]::new);
-                HologramBuilder builder = Hologram.builder(KillGoal.INSTANCE, location);
-                builder.addLine(makeProgressLine());
-                for(int i = 0; i < topPlayers.length; i++) {
-                    builder.addLine(makePlayerLine(topPlayers[i], i));
-                }
-                builder.loadAndBuild(hologramPool);
-            }
-        };
+    private transient BukkitRunnable UPDATE_RUNNABLE;
 
     public Leaderboard(int numPlayers, Location location) {
         this.numPlayers = numPlayers;
@@ -49,9 +37,23 @@ public class Leaderboard implements Serializable {
     }
 
     public void initialize() {
+        if(running) running = false;
         if(hologramPool != null) hologramPool.getHolograms().clear();
         hologramPool = new HologramPool(KillGoal.INSTANCE, VISIBLE_RANGE);
 
+        UPDATE_RUNNABLE = new BukkitRunnable() {
+            @Override
+            public void run() {
+                clearHolograms();
+                PlayerData[] topPlayers = PlayerData.getTopPlayers(numPlayers).toArray(PlayerData[]::new);
+                HologramBuilder builder = Hologram.builder(KillGoal.INSTANCE, location);
+                builder.addLine(makeProgressLine());
+                for(int i = 0; i < topPlayers.length; i++) {
+                    builder.addLine(makePlayerLine(topPlayers[i], i));
+                }
+                builder.loadAndBuild(hologramPool);
+            }
+        };
         UPDATE_RUNNABLE.runTaskTimer(KillGoal.INSTANCE, 0, UPDATE_FREQUENCY);
         running = true;
     }

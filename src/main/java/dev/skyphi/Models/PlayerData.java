@@ -92,4 +92,10 @@ public class PlayerData implements Serializable {
         }
     }
 
+    public static void reset() {
+        KillGoal.TOTAL_KILLS = 0;
+        ALL_DATA.clear();
+        save();
+    }
+
 }

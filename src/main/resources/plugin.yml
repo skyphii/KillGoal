@@ -1,6 +1,6 @@
 main: dev.skyphi.KillGoal
 name: KillGoal
-version: 1.2.3
+version: 1.2.4
 api-version: 1.20
 depend: [ProtocolLib]
 commands:
@@ -11,4 +11,8 @@ commands:
   leaderboard:
     description: Set the leaderboard at your position
     usage: /<command> [numPlayers]
+    default: op
+  reset:
+    description: Reset player data and leaderboard
+    usage: /<command>
     default: op
