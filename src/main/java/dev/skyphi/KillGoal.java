@@ -8,6 +8,7 @@ import com.github.unldenis.hologram.HologramPool;
 import dev.skyphi.Commands.LeaderboardCommand;
 import dev.skyphi.Commands.ResetCommand;
 import dev.skyphi.Commands.SetGoalCommand;
+import dev.skyphi.Listeners.JoinListener;
 import dev.skyphi.Listeners.KillListener;
 import dev.skyphi.Listeners.SnowballListener;
 import dev.skyphi.Listeners.SpawnerListener;
@@ -38,6 +39,7 @@ public class KillGoal extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SnowballListener(), this);
         getServer().getPluginManager().registerEvents(new SpawnerListener(), this);
         getServer().getPluginManager().registerEvents(new KillListener(), this);
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
 
         this.getCommand("setgoal").setExecutor(new SetGoalCommand());
         this.getCommand("leaderboard").setExecutor(new LeaderboardCommand());
