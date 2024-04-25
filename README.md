@@ -1,6 +1,6 @@
 # KillGoal
 
-This spigot plugin is being developed for SootMC's 2023 Christmas event, but designed to be reused for similar events in the future.
+This Minecraft/Spigot plugin was developed for a community server's Christmas event. It was a rushed development and focused on the specific requirements provided, so it may not perfectly fit the use-cases for similar events. The server has since shut down and this repo is not being maintained.
 
 # TO-DO
 - Ice zombies?
